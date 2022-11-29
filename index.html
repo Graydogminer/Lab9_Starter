@@ -87,6 +87,14 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+  window.TrackJS && TrackJS.install({ 
+    token: "302cb2309a614d43a3e1e0f098904181"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+</script>
+
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -102,6 +110,141 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    // Step 2
+    for (var i=0; i < errorBtns.length; i++) {
+
+      let currButton = errorBtns[i];
+
+      currButton.addEventListener('click', (event) => {
+
+        if (currButton.innerHTML == "Console Log") {
+
+          console.log("Console Log Demo");
+
+        }
+
+        if (currButton.innerHTML == "Console Error") {
+
+          console.error("Console Error Demo");
+
+        }
+
+        if (currButton.innerHTML == "Console Count") {
+
+          console.count("Count Button");
+
+        }
+
+
+        if (currButton.innerHTML == "Console Warn") {
+
+          console.warn("Console Warn Button");
+
+        }
+
+        if (currButton.innerHTML == "Console Assert") {
+
+          console.assert(2+1==2, "Number is not equal to 2");
+
+        }
+
+        if (currButton.innerHTML == "Console Clear") {
+
+          console.clear();
+
+        }
+        
+        if (currButton.innerHTML == "Console Dir") {
+
+          console.dir(currButton);
+
+        }
+
+        if (currButton.innerHTML == "Console dirxml") {
+
+          console.dirxml(currButton);
+
+        }
+
+        if (currButton.innerHTML == "Console Group Start") {
+
+          console.group();
+
+        }
+
+        if (currButton.innerHTML == "Console Group End") {
+
+          console.groupEnd();
+
+        }
+
+        if (currButton.innerHTML == "Console Table") {
+
+          console.table({firstname:"Marc", lastname:"Reta"});
+
+        }
+
+        if (currButton.innerHTML == "Start Timer") {
+
+          console.time();
+
+        }
+
+        if (currButton.innerHTML == "End Timer") {
+
+          console.timeEnd();
+
+        }
+
+        if (currButton.innerHTML == "Console Trace") {
+
+          console.trace();
+
+        }
+
+        if (currButton.innerHTML == "Trigger a Global Error") {
+
+          throw new Error('Error');
+
+        }
+
+
+      })
+
+    }
+
+  // Step 3
+  try {
+    throw new Error("Throwing error");
+  }
+  catch(err) {
+   console.log("Catched Error!");
+  }
+  finally {
+    console.log("Run this code no matter what");
+  }
+
+  // Step 4
+  class MarcError extends Error {
+    constructor(message) {
+      super(message);
+      this.name = "MarcError";
+    }
+  }
+
+  try {
+    throw new MarcError("Marc is handsome");
+  } catch(err) {
+    console.log(err.message);
+  }
+
+  // Step 5
+  window.addEventListener("error", (event) => {
+    console.log(event);
+  });
+
+
   </script>
 </body>
 
